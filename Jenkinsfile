@@ -23,7 +23,7 @@ pipeline{
 
                     chmod +x .tools/terrascan
 
-                    ./.tools/terrascan scan -i terraform -d terragoat -o json > reports/terrascan.json
+                    ./.tools/terrascan scan -i terraform -d terragoat -o json > terrascan.json
 
                 '''
             }
