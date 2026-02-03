@@ -23,7 +23,7 @@ pipeline{
 
                     chmod +x .tools/terrascan
 
-                    ./.tools/terrascan scan  -o terrascan.json
+                    ./.tools/terrascan scan  -o json
 
                 '''
             }
