@@ -11,7 +11,7 @@ pipeline{
                     apk add --no-cache curl tar
 
                     set -e
-                    mkdir -p .tools reports
+                    mkdir -p .tools
 
                     ASSET_URL=$(curl -s https://api.github.com/repos/tenable/terrascan/releases/latest \
                         | grep -Eo 'https://[^"]+_Linux_x86_64\\.tar\\.gz' | head -n 1)
@@ -23,14 +23,14 @@ pipeline{
 
                     chmod +x .tools/terrascan
 
-                    ./.tools/terrascan scan -i terraform -d terragoat -o json > reports/terrascan.json
+                    ./.tools/terrascan scan -i terraform -d terragoat -o json > terrascan.json
 
                 '''
             }
-            post {
-                always {
-                    archiveArtifacts artifacts: 'reports/terrascan.json', allowEmptyArchive: true
-                }
+        }
+        post {
+            always {
+                archiveArtifacts artifacts: 'terrascan.json', allowEmptyArchive: true
             }
         }
     }
