@@ -23,9 +23,14 @@ pipeline{
 
                     chmod +x .tools/terrascan
 
-                    ./.tools/terrascan scan
+                    ./.tools/terrascan scan -i terraform -d terragoat -o json > reports/terrascan.json
 
                 '''
+            }
+        }
+        post {
+            always {
+                archiveArtifacts artifacts: 'reports/terrascan.json', allowEmptyArchive: true
             }
         }
     }
