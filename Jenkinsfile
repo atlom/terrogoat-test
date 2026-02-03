@@ -27,6 +27,11 @@ pipeline{
 
                 '''
             }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'terrascan.json', fingerprint: true
+                }
+            }
         }
     }
 }
