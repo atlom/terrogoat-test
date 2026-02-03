@@ -4,7 +4,7 @@ pipeline{
         stage ('terrascan'){
             steps{
                 sh '''
-                    apk add --no-cache curl tar
+                    apk add --no-cache curl
 
                     curl -L "$(curl -s https://api.github.com/repos/tenable/terrascan/releases/latest | grep -o -E "https://.+?_Linux_x86_64.tar.gz")" > terrascan.tar.gz
                     tar -xf terrascan.tar.gz terrascan && rm terrascan.tar.gz
