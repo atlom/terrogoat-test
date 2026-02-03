@@ -27,10 +27,10 @@ pipeline{
 
                 '''
             }
-        }
-        post {
-            always {
-                archiveArtifacts artifacts: 'reports/terrascan.json', allowEmptyArchive: true
+            post {
+                always {
+                    archiveArtifacts artifacts: 'reports/terrascan.json', allowEmptyArchive: true
+                }
             }
         }
     }
